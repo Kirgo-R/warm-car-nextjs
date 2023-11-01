@@ -1,0 +1,47 @@
+@import "../../styles/index";
+
+.popup {
+  position: fixed;
+  inset: 0;
+  padding: 0 0 0 calc(100% - 520px);
+  margin: 111px 0 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.5s;
+  background: $popup-bg-color;
+}
+
+.menu {
+  background: $bg-color-light;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: start;
+  padding: 130px 128px 0;
+  box-sizing: border-box;
+  gap: 32px;
+  transform: translateX(100%);
+  transition: 0.5s;
+}
+
+.link {
+  @include link-mobile;
+  color: $text-color-main;
+}
+
+.link_active {
+  opacity: .7;
+  text-decoration: underline;
+}
+
+.opened {
+  opacity: 1;
+  pointer-events: all;
+
+  ul {
+    transform: translateX(0);
+  }
+}

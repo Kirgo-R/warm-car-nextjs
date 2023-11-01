@@ -1,0 +1,14 @@
+@import "../../styles/index";
+
+.input {
+  background: $input-bg-color;
+  border: 1px $border-color solid;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: 300;
+  height: 100%;
+  @media (max-width: 768px) {
+    height: 40px;
+  }
+}

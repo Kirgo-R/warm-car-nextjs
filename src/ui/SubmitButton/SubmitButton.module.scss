@@ -1,0 +1,21 @@
+@import "../../styles/index";
+
+.button {
+  width: 110px;
+  height: 40px;
+  background: $submit-button-color;
+  border-radius: 3px;
+  padding: 0;
+  color: $text-button-submit-color;
+  @include submit-button-typography;
+  cursor: pointer;
+  transition: opacity .3s linear;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  @media (max-width: 768px) {
+    align-self: end;
+  }
+}

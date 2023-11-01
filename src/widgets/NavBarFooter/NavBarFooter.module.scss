@@ -1,0 +1,26 @@
+@import "../../styles/index";
+
+.menu {
+  display: flex;
+  justify-content: center;
+
+  li:not(:last-of-type) {
+    padding-right: 16px;
+    border-right: 1px $border-color-light solid;
+    margin-right: 16px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.link {
+  @include link;
+  color: $text-color-dark-theme;
+}
+
+.link_active {
+  opacity: .7;
+  text-decoration: underline;
+}

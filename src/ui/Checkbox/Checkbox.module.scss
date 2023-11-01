@@ -1,0 +1,55 @@
+@import '../../styles/index';
+
+.checkbox {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+}
+
+.checkbox__item {
+  position: relative;
+  top: 4px;
+  width: 40px;
+  height: 20px;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: 1px $border-color solid;
+
+}
+
+.checkbox__pseudo {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 40px;
+  height: 20px;
+  background: $checkbox-active-color;
+  border-radius: 50px;
+  transition: 0.3s ease;
+
+  &:after {
+    content: '';
+    height: 16px;
+    width: 16px;
+    border-radius: 50px;
+    background-color: $checkbox-color;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border: 1px $border-checkbox solid;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+  }
+}
+
+.checkbox__pseudo_disabled {
+  background: $checkbox-disable-color;
+
+  &:after {
+    transform: translateX(-120%);
+  }
+}

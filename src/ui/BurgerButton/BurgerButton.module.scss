@@ -1,0 +1,56 @@
+@import "../../styles/index";
+
+.button {
+  display: none;
+  position: relative;
+  margin: 0 32px 0 0;
+  padding: 0;
+  width: 32px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    @include burger-item;
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+
+  &:after {
+    content: '';
+    @include burger-item;
+    bottom: 0;
+  }
+
+  &:before {
+    content: '';
+    @include burger-item;
+    top: 0;
+  }
+}
+
+.button_active {
+
+  span {
+    transform: scale(0) translate(0px, -50%);
+
+  }
+
+  &:after {
+    bottom: 50%;
+
+    transform: rotate(-45deg) translate(0px, 50%);
+  }
+
+  &:before {
+    top: 50%;
+
+    transform: rotate(45deg) translate(0px, -50%);
+  }
+}

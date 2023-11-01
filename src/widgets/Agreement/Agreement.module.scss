@@ -1,0 +1,29 @@
+@import '../../styles/index';
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+
+  @media (max-width: 768px) {
+    align-self: end;
+  }
+}
+
+.text {
+  color: $text-color-main;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 32px;
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    order: -1;
+  }
+}

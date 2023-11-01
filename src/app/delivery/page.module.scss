@@ -1,0 +1,5 @@
+@import "../../styles/index";
+
+.title {
+  @include title-h2;
+}

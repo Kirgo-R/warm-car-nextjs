@@ -1,0 +1,20 @@
+@import "../../styles/index";
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.link {
+  @include link;
+  color: $text-color-main;
+}
+
+.link_active {
+  opacity: .7;
+  text-decoration: underline;
+}
