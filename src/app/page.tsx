@@ -21,8 +21,6 @@ export default function Home() {
         src={image}
         alt="Утеплители радиаторной решетки автомобиля"
         priority
-        width={480}
-        height={480}
         style={{
           maxWidth: '100%',
           height: 'auto'

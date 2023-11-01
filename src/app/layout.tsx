@@ -17,8 +17,7 @@ export const metadata: Metadata = {
   title:
     'WarmCar | Утеплители радиаторной решетки автомобиля',
   description:
-    'Утеплители радиаторной решетки для всех марок автомобилей',
-  icons: '/favicon.svg'
+    'Утеплители радиаторной решетки для всех марок автомобилей'
 }
 
 export default function RootLayout({

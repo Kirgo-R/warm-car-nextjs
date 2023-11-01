@@ -8,8 +8,6 @@ import { usePathname } from 'next/navigation'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { closePopup } from '@/store/features/mobileSlice'
-import { useEffect } from 'react'
-import { useResize } from '@/hooks/useResize'
 
 export default function MobileMenu() {
   const menuOpened = useAppSelector(
@@ -18,11 +16,6 @@ export default function MobileMenu() {
   const dispatch = useAppDispatch()
 
   const pathname = usePathname()
-  const { isScreenMobile } = useResize()
-
-  useEffect(() => {
-    !isScreenMobile && dispatch(closePopup())
-  }, [isScreenMobile])
 
   function handleClose() {
     dispatch(closePopup())
