@@ -1,95 +1,57 @@
+import styles from './page.module.scss'
+import image from '@/assets/image/main-image.jpg'
 import Image from 'next/image'
-import styles from './page.module.css'
+import About from '@/widgets/About/About'
+import Form from '@/components/FormContactUs/Form'
+import SubmitButton from '@/ui/SubmitButton/SubmitButton'
+import Input from '@/ui/Input/Input'
+import TextArea from '@/ui/TextArea/TextArea'
+import Agreement from '@/widgets/Agreement/Agreement'
+import { aboutProduct, aboutUs } from '@/constants/articles'
+import { inputsContactUs } from '@/constants/inputsContactsUs'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+      <h1 className={styles.title}>
+        WarmCar - утеплители радиаторной решетки для Вашего
+        автомобиля.
+      </h1>
+      <Image
+        src={image}
+        alt="Утеплители радиаторной решетки автомобиля"
+        priority
+        width={480}
+        height={480}
+        style={{
+          maxWidth: '100%',
+          height: 'auto'
+        }}
+      />
+      <About
+        title={'О продукции'}
+        paragraph={aboutProduct}
+      />
+      <Form title={'Связаться с нами'} name={'contact-us'}>
+        {inputsContactUs.map(input => (
+          <Input
+            type={input.type}
+            name={input.name}
+            placeholder={input.placeholder}
+            key={input.name}
+          />
+        ))}
+        <TextArea
+          name={'info'}
+          placeholder={'Дополнительный комментарий'}
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <Agreement />
+        <SubmitButton />
+      </Form>
+      <About
+        title={'О нашей компании'}
+        paragraph={aboutUs}
+      />
+    </>
   )
 }
