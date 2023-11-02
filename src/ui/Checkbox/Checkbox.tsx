@@ -3,10 +3,13 @@
 import styles from './Checkbox.module.scss'
 import React from 'react'
 import { clsx } from 'clsx'
+import { usePathname } from 'next/navigation'
 
 export default function Checkbox() {
   const [isAgree, setIsAgree] =
     React.useState<boolean>(false)
+
+  const pathname = usePathname()
 
   function handleChange() {
     setIsAgree(!isAgree)

@@ -1,15 +1,19 @@
-@import "../../styles/index";
+@import "../../styles/styles";
 
 .button {
-  width: 110px;
+
   height: 40px;
+  padding: 0 8px;
   background: $submit-button-color;
   border-radius: 3px;
-  padding: 0;
   color: $text-button-submit-color;
   @include submit-button-typography;
   cursor: pointer;
   transition: opacity .3s linear;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   &:hover {
     opacity: .7;

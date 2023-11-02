@@ -1,0 +1,21 @@
+.select {
+  font-size: 15px;
+  line-height: 28px;
+  width: 20vw;
+  max-width: 220px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #e2e1e5;
+  background: #fff;
+
+  @media (max-width: 1170px) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.option {
+  background: #fff;
+  padding: 4px;
+  box-sizing: border-box;
+}

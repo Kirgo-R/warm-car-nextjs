@@ -21,10 +21,12 @@ h1, h2, h3, p {
   margin: 0;
 }
 
-button, input, fieldset, textarea {
+button, input, fieldset, textarea, select {
   border: none;
   background: transparent;
   outline: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul {

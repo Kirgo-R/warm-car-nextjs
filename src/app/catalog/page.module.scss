@@ -1,5 +1,6 @@
-@import "../../styles/index";
+@import "../../styles/styles";
 
 .title {
   @include title-h2;
+  padding: 0 0 16px;
 }

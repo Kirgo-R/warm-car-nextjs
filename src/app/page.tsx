@@ -2,8 +2,8 @@ import styles from './page.module.scss'
 import image from '@/assets/image/main-image.jpg'
 import Image from 'next/image'
 import About from '@/widgets/About/About'
-import Form from '@/components/FormContactUs/Form'
-import SubmitButton from '@/ui/SubmitButton/SubmitButton'
+import Form from '@/components/Form/Form'
+import Button from '@/ui/SubmitButton/Button'
 import Input from '@/ui/Input/Input'
 import TextArea from '@/ui/TextArea/TextArea'
 import Agreement from '@/widgets/Agreement/Agreement'
@@ -44,7 +44,7 @@ export default function Home() {
           placeholder={'Дополнительный комментарий'}
         />
         <Agreement />
-        <SubmitButton />
+        <Button value={'Отправить'} type={'submit'} />
       </Form>
       <About
         title={'О нашей компании'}

@@ -1,8 +1,8 @@
-@import "../styles/index";
+@import "../styles/styles";
 
 .main {
   min-height: calc(100vh - 143px - 291px - 64px);
-  padding: 32px 16px 0;
+  padding: 32px 16px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;

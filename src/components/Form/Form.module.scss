@@ -1,4 +1,4 @@
-@import "../../styles/index";
+@import "../../styles/styles";
 
 .wrapper {
   max-width: 1145px;
@@ -31,4 +31,23 @@
   color: $text-color-dark-theme;
   font-size: 24px;
   font-weight: 500;
+}
+
+.wrapper-wholesales {
+  background: $bg-color-form;
+  padding: 32px 32px;
+}
+
+.title-wholesales {
+  color: $text-color-main;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 0 32px;
+}
+
+.form-wholesales {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
