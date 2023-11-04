@@ -1,4 +1,4 @@
-import { IInput } from '@/models/interfaces/IInput'
+import { IInput } from '@/models/IInput'
 
 export const inputsContactUs: IInput[] = [
   {

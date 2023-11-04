@@ -57,3 +57,24 @@
   left: 0;
   transition: all 0.3s ease 0s;
 }
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@mixin skeleton {
+  border-radius: 2px;
+  background: $bg-sceleton;
+  margin: 0 0 4px;
+  animation: gradient-animation 5s infinite;
+  transform: translate3d(0, 0, 0);
+  background-size: 400% 400%;
+}

@@ -1,4 +1,4 @@
-import { ISelect } from '@/models/interfaces/ISelect'
+import { ISelect } from '@/models/ISelect'
 
 export const selects: ISelect[] = [
   {

@@ -1,0 +1,39 @@
+@import '../../styles/styles';
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  padding: 5px 0 0 7px;
+  box-sizing: border-box;
+  background: $bg-caption;
+  height: 33px;
+  color: $font-color-cards;
+  font-size: 18px;
+  font-weight: 300;
+  bottom: 0;
+  width: 100%;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 7px;
+  box-sizing: border-box;
+  gap: 4px;
+}
+
+.price {
+  color: $font-color-cards;
+  font-size: 16px;
+  font-weight: 300;
+}

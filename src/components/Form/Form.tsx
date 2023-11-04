@@ -1,6 +1,6 @@
 import styles from './Form.module.scss'
 import React from 'react'
-import FormProps from '@/models/props/FormProps'
+import FormProps from '@/types/props/FormProps'
 import { clsx } from 'clsx'
 
 export default function Form({

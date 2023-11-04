@@ -1,4 +1,4 @@
-import InputProps from '@/models/props/InputProps'
+import InputProps from '@/types/props/InputProps'
 import styles from './Input.module.scss'
 import { tildaFont } from '@/assets/fonts/fonts'
 

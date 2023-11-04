@@ -3,4 +3,14 @@
 .title {
   @include title-h2;
   padding: 0 0 16px;
+  justify-self: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  padding: 32px 0 0;
+  gap: 16px 32px;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default interface FormProps {
+export type FormProps = {
   children: React.ReactNode
   title: string
   name: string

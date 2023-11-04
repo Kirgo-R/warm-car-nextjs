@@ -1,4 +1,4 @@
-export default interface ApoutProps {
+export type ApoutProps = {
   title: string
   paragraph: string
 }

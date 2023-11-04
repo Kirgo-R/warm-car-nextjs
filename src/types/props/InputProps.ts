@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default interface InputProps {
+export type InputProps = {
   type: string
   name: string
   // onChange: React.ChangeEventHandler<HTMLInputElement>

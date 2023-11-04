@@ -1,4 +1,4 @@
-import AboutProps from '@/models/props/ApoutProps'
+import AboutProps from '@/types/props/ApoutProps'
 import styles from './About.module.scss'
 
 export default function About({

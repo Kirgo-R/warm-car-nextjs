@@ -3,18 +3,25 @@
 .main {
   min-height: calc(100vh - 143px - 291px - 64px);
   padding: 32px 16px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
 
   @media (max-width: 768px) {
     min-height: calc(100vh - 111px - 272px - 32px);
-    padding: 127px 0 0;
+    padding: 127px 0 32px;
     margin: 0 16px;
+  }
+
+  img {
+    justify-self: center;
   }
 }
 
 .title {
   font-weight: 300;
+  justify-self: center;
   @include title-h1;
+}
+
+.main-catalog {
+  display: block;
 }

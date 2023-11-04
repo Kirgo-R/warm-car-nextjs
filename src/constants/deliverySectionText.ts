@@ -1,4 +1,4 @@
-import { IInfo } from '@/models/interfaces/IInfo'
+import { IInfo } from '@/models/IInfo'
 
 export const deliverySectionText: IInfo[] = [
   {

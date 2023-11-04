@@ -8,6 +8,12 @@ import { wholesalersForm } from '@/constants/wholesalersForm'
 import Checkbox from '@/ui/Checkbox/Checkbox'
 import Agreement from '@/widgets/Agreement/Agreement'
 import Button from '@/ui/SubmitButton/Button'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title:
+    'Оптовикам | WarmCar | Утеплители радиаторной решетки автомобиля'
+}
 
 export default function Wholesalers() {
   const { title, paragraph, list } = wholesalersInfo
