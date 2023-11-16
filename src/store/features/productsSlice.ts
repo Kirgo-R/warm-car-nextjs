@@ -4,7 +4,9 @@ import {
 } from '@reduxjs/toolkit'
 
 const initialState: ProductsState = {
-  cart: []
+  product: null,
+  cart: [],
+  overviewIsOpened: false
 }
 
 export const loadCartFromLocalStorage = createAsyncThunk(
@@ -24,15 +26,12 @@ const productsSlice = createSlice({
       )
 
       if (existingProduct) {
-        // Если товар уже существует в корзине, увеличиваем счетчик
         if (existingProduct.cartCounter !== undefined) {
           existingProduct.cartCounter++
         } else {
-          // Если cartCounter отсутствует, устанавливаем его в 1
           existingProduct.cartCounter = 1
         }
       } else {
-        // Если товара еще нет в корзине, добавляем его с cartCounter = 1
         state.cart.push({
           id: action.payload.id,
           imageUrl: action.payload.image,
@@ -57,6 +56,23 @@ const productsSlice = createSlice({
         'cart',
         JSON.stringify(state.cart)
       )
+    },
+    openOverview(state, action) {
+      state.overviewIsOpened = true
+      state.product = {
+        id: action.payload.id,
+        imageUrl: action.payload.imageUrl,
+        alternativeText: action.payload.alternativeText,
+        model: action.payload.model,
+        mark: action.payload.mark,
+        year: action.payload.year,
+        price: action.payload.price,
+        cartCounter: 0
+      }
+    },
+    closeOverview(state) {
+      state.overviewIsOpened = false
+      state.product = null
     }
   },
   extraReducers: builder => {
@@ -69,5 +85,10 @@ const productsSlice = createSlice({
   }
 })
 
-export const { addCart, removeCart } = productsSlice.actions
+export const {
+  addCart,
+  removeCart,
+  openOverview,
+  closeOverview
+} = productsSlice.actions
 export default productsSlice.reducer

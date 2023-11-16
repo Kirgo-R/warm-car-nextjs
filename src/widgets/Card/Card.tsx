@@ -7,14 +7,21 @@ import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import {
   addCart,
+  closeOverview,
   loadCartFromLocalStorage,
+  openOverview,
   removeCart
 } from '@/store/features/productsSlice'
-import { useEffect, useState } from 'react'
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useState
+} from 'react'
 import { AppDispatch } from '@/store/store'
 import { useAppSelector } from '@/hooks/useAppSelector'
 
-export default function Card({
+export default memo(function Card({
   id,
   mark,
   model,
@@ -38,7 +45,7 @@ export default function Card({
     setIsAdded(isProductAdded)
   }, [cart, id])
 
-  function handleAddToCart() {
+  const handleAddToCart = useCallback(() => {
     dispatch(
       addCart({
         id,
@@ -51,15 +58,29 @@ export default function Card({
       })
     )
     setIsAdded(true)
-  }
+  }, [])
 
-  function handleRemoveCart() {
+  const handleRemoveCart = useCallback(() => {
     dispatch(
       removeCart({
         id
       })
     )
     setIsAdded(false)
+  }, [])
+
+  function handleOpenProduct() {
+    dispatch(
+      openOverview({
+        id: id,
+        imageUrl: imageUrl,
+        alternativeText: alternativeText,
+        model: model,
+        mark: mark,
+        year: year,
+        price: price
+      })
+    )
   }
 
   return (
@@ -69,7 +90,7 @@ export default function Card({
           src={`${SERVER_URL}${imageUrl}`}
           alt={`${alternativeText}`}
           style={{
-            maxWidth: '100%',
+            width: '100%',
             height: '100%',
             objectFit: 'cover',
             borderRadius: '6px 6px 0 0',
@@ -77,8 +98,12 @@ export default function Card({
           }}
           width={310}
           height={200}
+          onClick={handleOpenProduct}
         />
-        <figcaption className={styles.title}>
+        <figcaption
+          className={styles.title}
+          onClick={handleOpenProduct}
+        >
           {`${mark} ${model} ${year}`}
         </figcaption>
         <CartButton
@@ -95,4 +120,4 @@ export default function Card({
       </article>
     </li>
   )
-}
+})
