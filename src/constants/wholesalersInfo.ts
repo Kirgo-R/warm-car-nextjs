@@ -1,6 +1,4 @@
-import { IInfo } from '@/models/IInfo'
-
-export const wholesalersInfo: IInfo = {
+export const wholesalersInfo: IInfoData = {
   title: 'Условия опта',
   paragraph:
     'Опт начинается от 30 000 руб. При оптовых покупках предусмотрены дополнительные скидки:',

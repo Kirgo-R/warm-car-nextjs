@@ -5,9 +5,8 @@ import Form from '@/components/Form/Form'
 import Input from '@/ui/Input/Input'
 import TextArea from '@/ui/TextArea/TextArea'
 import { wholesalersForm } from '@/constants/wholesalersForm'
-import Checkbox from '@/ui/Checkbox/Checkbox'
 import Agreement from '@/widgets/Agreement/Agreement'
-import Button from '@/ui/SubmitButton/Button'
+import Button from '@/ui/Button/Button'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

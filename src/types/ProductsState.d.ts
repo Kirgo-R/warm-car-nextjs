@@ -1,0 +1,3 @@
+type ProductsState = {
+  cart: IProduct[]
+}

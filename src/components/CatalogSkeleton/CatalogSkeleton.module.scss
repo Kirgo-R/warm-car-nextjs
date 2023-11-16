@@ -1,0 +1,11 @@
+@import '../../styles/styles';
+
+.wrapper {
+  display: grid;
+}
+
+.title {
+  @include title-skeleton;
+  @include skeleton;
+  justify-self: center;
+}

@@ -1,0 +1,3 @@
+interface CardsListProps {
+  cards: CardData[]
+}

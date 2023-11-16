@@ -1,6 +1,6 @@
 import styles from './TextArea.module.scss'
-import { TextAreaProps } from '@/types/props/TextAreaProps'
 import { tildaFont } from '@/assets/fonts/fonts'
+import { TextAreaProps } from '@/models/props/TextAreaProps'
 
 export default function TextArea({
   name,

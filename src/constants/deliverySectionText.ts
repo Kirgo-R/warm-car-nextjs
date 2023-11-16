@@ -1,6 +1,4 @@
-import { IInfo } from '@/models/IInfo'
-
-export const deliverySectionText: IInfo[] = [
+export const deliverySectionText: IInfoData[] = [
   {
     title: 'Способы оплаты',
     paragraph:

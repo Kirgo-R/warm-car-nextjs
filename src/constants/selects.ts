@@ -1,6 +1,4 @@
-import { ISelect } from '@/models/ISelect'
-
-export const selects: ISelect[] = [
+export const selects: ISelectData[] = [
   {
     name: 'mark',
     label: 'Выберите марку автомобиля',

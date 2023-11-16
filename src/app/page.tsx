@@ -3,12 +3,12 @@ import image from '@/assets/image/main-image.jpg'
 import Image from 'next/image'
 import About from '@/widgets/About/About'
 import Form from '@/components/Form/Form'
-import Button from '@/ui/SubmitButton/Button'
 import Input from '@/ui/Input/Input'
 import TextArea from '@/ui/TextArea/TextArea'
 import Agreement from '@/widgets/Agreement/Agreement'
 import { aboutProduct, aboutUs } from '@/constants/articles'
 import { inputsContactUs } from '@/constants/inputsContactsUs'
+import Button from '@/ui/Button/Button'
 
 export default function Home() {
   return (

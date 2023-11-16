@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IsOpenState } from '@/types/IsOpenState'
+import IsOpenState from '@/types/IsOpenState'
 
 const initialState: IsOpenState = {
   isOpen: false

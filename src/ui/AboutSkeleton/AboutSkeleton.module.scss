@@ -1,0 +1,22 @@
+@import "../../styles/styles";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px 0 0;
+}
+
+.title {
+  @include title-skeleton;
+  @include skeleton;
+}
+
+.paragraph {
+  width: 100%;
+  height: 250px;
+  @include skeleton;
+  margin: 8px 0 0;
+  border-radius: 70px;
+}

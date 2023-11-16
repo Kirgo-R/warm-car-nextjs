@@ -1,5 +1,3 @@
-import { ILink } from '@/models/ILink'
-
 export const links: ILink[] = [
   { name: 'Главная', href: '/' },
   { name: 'Каталог', href: '/catalog' },

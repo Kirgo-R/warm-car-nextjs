@@ -1,7 +1,7 @@
 import styles from './FormSearch.module.scss'
 import Select from '@/ui/Select/Select'
 import { selects } from '@/constants/selects'
-import Button from '@/ui/SubmitButton/Button'
+import Button from '@/ui/Button/Button'
 
 export default function FormSearch() {
   return (

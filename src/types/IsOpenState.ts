@@ -1,3 +1,4 @@
-export type IsOpenState = {
+type IsOpenState = {
   isOpen: boolean
 }
+export default IsOpenState

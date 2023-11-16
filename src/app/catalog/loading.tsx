@@ -1,3 +1,9 @@
-export default function PageLoader() {
-  return <p>Закрузка каталога...</p>
+import CatalogSkeleton from '@/components/CatalogSkeleton/CatalogSkeleton'
+
+export default function CatalogLoader() {
+  return (
+    <>
+      <CatalogSkeleton />
+    </>
+  )
 }

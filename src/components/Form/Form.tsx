@@ -1,7 +1,7 @@
 import styles from './Form.module.scss'
 import React from 'react'
-import FormProps from '@/types/props/FormProps'
 import { clsx } from 'clsx'
+import { FormProps } from '@/models/props/FormProps'
 
 export default function Form({
   children,

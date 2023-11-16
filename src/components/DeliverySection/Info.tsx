@@ -1,4 +1,3 @@
-import { InfoProps } from '@/types/props/InfoProps'
 import styles from './Info.module.scss'
 
 export default function Info({

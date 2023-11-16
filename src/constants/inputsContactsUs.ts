@@ -1,6 +1,4 @@
-import { IInput } from '@/models/IInput'
-
-export const inputsContactUs: IInput[] = [
+export const inputsContactUs: IInputData[] = [
   {
     type: 'text',
     name: 'yourName',

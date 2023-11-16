@@ -1,9 +1,9 @@
-import MainSceleton from '@/ui/sceletons/MainSceleton/MainSceleton'
+import MainSkeleton from '@/components/MainSkeleton/MainSkeleton'
 
 export default function PageLoader() {
   return (
     <>
-      <MainSceleton />
+      <MainSkeleton />
     </>
   )
 }

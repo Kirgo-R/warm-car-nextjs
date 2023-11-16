@@ -71,10 +71,22 @@
 }
 
 @mixin skeleton {
-  border-radius: 2px;
   background: $bg-sceleton;
-  margin: 0 0 4px;
   animation: gradient-animation 5s infinite;
   transform: translate3d(0, 0, 0);
   background-size: 400% 400%;
+  box-shadow: 0 0 35px 0 rgba(71, 74, 81, 0.35);
+  filter: blur(3px);
+}
+
+@mixin title-skeleton {
+  width: 100%;
+  max-width: 300px;
+  height: 12px;
+  border-radius: 100px;
+
+  &:nth-child(1) {
+    max-width: 270px;
+    margin: 0 0 8px;
+  }
 }

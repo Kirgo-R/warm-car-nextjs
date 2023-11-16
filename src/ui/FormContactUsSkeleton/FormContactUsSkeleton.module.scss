@@ -1,0 +1,9 @@
+@import '../../styles/styles';
+
+.wrapper {
+  width: 100%;
+  height: 250px;
+  @include skeleton;
+  margin: 32px 0 0;
+  border-radius: 70px;
+}

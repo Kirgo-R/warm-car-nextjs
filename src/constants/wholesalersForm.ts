@@ -1,6 +1,4 @@
-import { IInput } from '@/models/IInput'
-
-export const wholesalersForm: IInput[] = [
+export const wholesalersForm: IInputData[] = [
   {
     type: 'text',
     name: 'name',

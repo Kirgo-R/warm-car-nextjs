@@ -1,10 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import mobileMenuReducer from '@/store/features/mobileSlice'
+import mobileMenuReducer from './features/mobileSlice'
+import productsReducer from './features/productsSlice'
 
 export const store = configureStore({
   reducer: {
-    mobileMenu: mobileMenuReducer
-  }
+    mobileMenu: mobileMenuReducer,
+    products: productsReducer
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 })
 
 export type RootState = ReturnType<typeof store.getState>
