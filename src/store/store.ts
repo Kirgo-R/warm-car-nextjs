@@ -1,17 +1,61 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {
+  configureStore,
+  combineReducers
+} from '@reduxjs/toolkit'
 import mobileMenuReducer from './features/mobileSlice'
 import productsReducer from './features/productsSlice'
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-export const store = configureStore({
-  reducer: {
-    mobileMenu: mobileMenuReducer,
-    products: productsReducer
-  },
+const rootReducer = combineReducers({
+  products: productsReducer,
+  mobileMenu: mobileMenuReducer
+})
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: [
+    'mobileMenu',
+    'products.overviewIsOpened',
+    'products.modalOverview'
+  ]
+}
+
+const persistedReducer = persistReducer(
+  persistConfig,
+  rootReducer
+)
+
+const store = configureStore({
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
-      serializableCheck: false
+      serializableCheck: {
+        ignoredActions: [
+          FLUSH,
+          REHYDRATE,
+          PAUSE,
+          PERSIST,
+          PURGE,
+          REGISTER
+        ]
+      }
     })
 })
+
+export const persistor = persistStore(store)
+
+export default store
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

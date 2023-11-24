@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './CardsList.module.scss'
 import Card from '@/widgets/Card/Card'
 
@@ -6,20 +8,20 @@ export default function CardsList({
 }: CardsListProps) {
   return (
     <ul className={styles.wrapper}>
-      {cards.map(data => (
+      {cards.map(cardData => (
         <Card
-          key={data.id}
-          id={data.id}
-          mark={data.attributes.mark}
-          model={data.attributes.model}
-          year={data.attributes.year}
-          price={data.attributes.price}
+          key={cardData.id}
+          id={cardData.id}
+          mark={cardData.attributes.mark}
+          model={cardData.attributes.model}
+          year={cardData.attributes.year}
+          price={cardData.attributes.price}
           alternativeText={
-            data.attributes.image.data.attributes
+            cardData.attributes.image.data.attributes
               .alternativeText
           }
           imageUrl={
-            data.attributes.image.data.attributes.url
+            cardData.attributes.image.data.attributes.url
           }
         />
       ))}

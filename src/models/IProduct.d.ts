@@ -6,5 +6,5 @@ interface IProduct {
   mark: string
   year: string
   price: number
-  cartCounter?: number
+  cartCounter: number
 }

@@ -1,5 +1,5 @@
 type ProductsState = {
-  product: null | IProduct
-  cart: IProduct[]
+  productsInCart: IProduct[]
+  modalOverview: null | IProduct
   overviewIsOpened: boolean
 }

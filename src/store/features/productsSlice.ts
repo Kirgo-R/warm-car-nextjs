@@ -1,40 +1,31 @@
-import {
-  createAsyncThunk,
-  createSlice
-} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: ProductsState = {
-  product: null,
-  cart: [],
+  productsInCart: [],
+  modalOverview: null,
   overviewIsOpened: false
 }
-
-export const loadCartFromLocalStorage = createAsyncThunk(
-  'products/loadCartFromLocalStorage',
-  async () => {
-    return JSON.parse(localStorage.getItem('cart') || '[]')
-  }
-)
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addCart(state, action) {
-      const existingProduct = state.cart.find(
-        product => product.id === action.payload.id
-      )
-
-      if (existingProduct) {
-        if (existingProduct.cartCounter !== undefined) {
-          existingProduct.cartCounter++
-        } else {
-          existingProduct.cartCounter = 1
-        }
+    addProduct(state, action) {
+      if (!state.productsInCart) {
+        state.productsInCart = []
+      }
+      const existingProductIndex =
+        state.productsInCart.findIndex(
+          product => product.id === action.payload.id
+        )
+      if (existingProductIndex !== -1) {
+        state.productsInCart[
+          existingProductIndex
+        ].cartCounter += 1
       } else {
-        state.cart.push({
+        state.productsInCart.push({
           id: action.payload.id,
-          imageUrl: action.payload.image,
+          imageUrl: action.payload.imageUrl,
           alternativeText: action.payload.alternativeText,
           model: action.payload.model,
           mark: action.payload.mark,
@@ -43,23 +34,15 @@ const productsSlice = createSlice({
           cartCounter: 1
         })
       }
-      localStorage.setItem(
-        'cart',
-        JSON.stringify(state.cart)
-      )
-    },
-    removeCart(state, action) {
-      state.cart = state.cart.filter(
-        product => product.id !== action.payload.id
-      )
-      localStorage.setItem(
-        'cart',
-        JSON.stringify(state.cart)
-      )
     },
     openOverview(state, action) {
+      const existingProductIndex =
+        state.productsInCart.findIndex(
+          product => product.id === action.payload.id
+        )
+
       state.overviewIsOpened = true
-      state.product = {
+      state.modalOverview = {
         id: action.payload.id,
         imageUrl: action.payload.imageUrl,
         alternativeText: action.payload.alternativeText,
@@ -67,28 +50,52 @@ const productsSlice = createSlice({
         mark: action.payload.mark,
         year: action.payload.year,
         price: action.payload.price,
-        cartCounter: 0
+        cartCounter:
+          existingProductIndex !== -1
+            ? state.productsInCart[existingProductIndex]
+                .cartCounter
+            : 0
       }
     },
     closeOverview(state) {
       state.overviewIsOpened = false
-      state.product = null
-    }
-  },
-  extraReducers: builder => {
-    builder.addCase(
-      loadCartFromLocalStorage.fulfilled,
-      (state, action) => {
-        state.cart = action.payload
+      state.modalOverview = null
+    },
+    decrementCart(state, action) {
+      const existingProductIndex =
+        state.productsInCart.findIndex(
+          product => product.id === action.payload.id
+        )
+      if (existingProductIndex !== -1) {
+        const updatedCartCounter =
+          state.productsInCart[existingProductIndex]
+            .cartCounter - 1
+
+        state.productsInCart[
+          existingProductIndex
+        ].cartCounter =
+          updatedCartCounter >= 0 ? updatedCartCounter : 0
+        if (updatedCartCounter === 0) {
+          state.productsInCart =
+            state.productsInCart.filter(
+              product => product.id !== action.payload.id
+            )
+        }
       }
-    )
+    },
+    removeFromCart(state, action) {
+      state.productsInCart = state.productsInCart.filter(
+        product => product.id !== action.payload
+      )
+    }
   }
 })
 
 export const {
-  addCart,
-  removeCart,
+  addProduct,
   openOverview,
-  closeOverview
+  closeOverview,
+  decrementCart,
+  removeFromCart
 } = productsSlice.actions
 export default productsSlice.reducer

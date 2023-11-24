@@ -95,3 +95,24 @@
 
 }
 
+.spinbox {
+  display: flex;
+  gap: 2px;
+  margin: 30px 0 0;
+}
+
+.spinbox-button {
+  height: 25px;
+  width: 40px;
+  color: $text-color-main;
+  border-radius: 5px;
+  font-size: 21px;
+  cursor: pointer;
+  transition: opacity .35s linear;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+

@@ -4,21 +4,13 @@ import Image from 'next/image'
 import { SERVER_URL } from '@/constants/constants'
 import CartButton from '@/ui/CartButton/CartButton'
 import Link from 'next/link'
-import { useDispatch } from 'react-redux'
 import {
-  addCart,
-  closeOverview,
-  loadCartFromLocalStorage,
+  addProduct,
   openOverview,
-  removeCart
+  removeFromCart
 } from '@/store/features/productsSlice'
-import {
-  memo,
-  useCallback,
-  useEffect,
-  useState
-} from 'react'
-import { AppDispatch } from '@/store/store'
+import { memo, useEffect, useState } from 'react'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 
 export default memo(function Card({
@@ -30,44 +22,29 @@ export default memo(function Card({
   alternativeText,
   imageUrl
 }: CardProps) {
-  const dispatch = useDispatch<AppDispatch>()
-  const { cart } = useAppSelector(state => state.products)
-  const [isAdded, setIsAdded] = useState(false)
+  const dispatch = useAppDispatch()
+  const { productsInCart } = useAppSelector(
+    state => state.products
+  )
+  const isAdded = productsInCart.some(p => p.id === id)
 
-  useEffect(() => {
-    dispatch(loadCartFromLocalStorage())
-  }, [dispatch])
-
-  useEffect(() => {
-    const isProductAdded = cart.some(
-      product => product.id === id
-    )
-    setIsAdded(isProductAdded)
-  }, [cart, id])
-
-  const handleAddToCart = useCallback(() => {
+  function handleAddToCart() {
     dispatch(
-      addCart({
-        id,
-        imageUrl,
-        alternativeText,
-        model,
-        mark,
-        year,
-        price
+      addProduct({
+        id: id,
+        imageUrl: imageUrl,
+        alternativeText: alternativeText,
+        model: model,
+        mark: mark,
+        year: year,
+        price: price
       })
     )
-    setIsAdded(true)
-  }, [])
+  }
 
-  const handleRemoveCart = useCallback(() => {
-    dispatch(
-      removeCart({
-        id
-      })
-    )
-    setIsAdded(false)
-  }, [])
+  function handleRemoveCart() {
+    dispatch(removeFromCart(id))
+  }
 
   function handleOpenProduct() {
     dispatch(
@@ -89,9 +66,10 @@ export default memo(function Card({
         <Image
           src={`${SERVER_URL}${imageUrl}`}
           alt={`${alternativeText}`}
+          priority={true}
           style={{
-            width: '100%',
-            height: '100%',
+            maxWidth: '100%',
+            maxHeight: 'auto',
             objectFit: 'cover',
             borderRadius: '6px 6px 0 0',
             cursor: 'pointer'
