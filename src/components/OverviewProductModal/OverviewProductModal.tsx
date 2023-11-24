@@ -12,14 +12,22 @@ import {
   addProduct,
   closeOverview,
   decrementCart,
-  openOverview
+  openOverview,
+  removeFromCart
 } from '@/store/features/productsSlice'
 import { SERVER_URL } from '@/constants/constants'
 
 export default function OverviewProductModal() {
-  const { overviewIsOpened, modalOverview } =
-    useAppSelector(state => state.products)
+  const {
+    overviewIsOpened,
+    modalOverview,
+    productsInCart
+  } = useAppSelector(state => state.products)
   const dispatch = useAppDispatch()
+
+  const isAdded =
+    modalOverview !== null &&
+    productsInCart.some(p => p.id === modalOverview.id)
 
   useEffect(() => {
     const closeByEsc = (evt: KeyboardEvent) => {
@@ -35,17 +43,14 @@ export default function OverviewProductModal() {
     }
   }, [overviewIsOpened, dispatch])
 
-  const handleClose = () => {
+  function handleClose() {
     dispatch(closeOverview())
   }
 
-  function hadleIncrement() {
+  const handleUpdateOverview = (
+    updatedCartCounter: number
+  ) => {
     if (modalOverview !== null) {
-      dispatch(addProduct({ id: modalOverview.id }))
-      const updatedCartCounter =
-        modalOverview.cartCounter !== undefined
-          ? modalOverview.cartCounter + 1
-          : 1
       dispatch(
         openOverview({
           ...modalOverview,
@@ -55,19 +60,48 @@ export default function OverviewProductModal() {
     }
   }
 
+  function handleAddToCart() {
+    if (modalOverview !== null) {
+      dispatch(
+        addProduct({
+          id: modalOverview.id,
+          imageUrl: modalOverview.imageUrl,
+          alternativeText: modalOverview.alternativeText,
+          model: modalOverview.model,
+          mark: modalOverview.mark,
+          year: modalOverview.year,
+          price: modalOverview.price
+        })
+      )
+      const updatedCartCounter =
+        (modalOverview.cartCounter ?? 0) + 1
+      handleUpdateOverview(updatedCartCounter)
+    }
+  }
+
+  function handleRemiveFromCart() {
+    if (modalOverview !== null) {
+      dispatch(removeFromCart(modalOverview.id))
+    }
+  }
+
+  function hadleIncrement() {
+    if (modalOverview !== null) {
+      dispatch(addProduct({ id: modalOverview.id }))
+      const updatedCartCounter =
+        (modalOverview.cartCounter ?? 0) + 1
+      handleUpdateOverview(updatedCartCounter)
+    }
+  }
+
   function handleDecrement() {
     if (modalOverview !== null) {
       dispatch(decrementCart({ id: modalOverview.id }))
-      const updatedCartCounter =
-        modalOverview.cartCounter !== undefined
-          ? modalOverview.cartCounter - 1
-          : 1
-      dispatch(
-        openOverview({
-          ...modalOverview,
-          cartCounter: updatedCartCounter
-        })
+      const updatedCartCounter = Math.max(
+        (modalOverview.cartCounter ?? 0) - 1,
+        0
       )
+      handleUpdateOverview(updatedCartCounter)
     }
   }
 
@@ -119,34 +153,51 @@ export default function OverviewProductModal() {
             Кликните здесь чтобы узнать оптовую цену
           </Link>
           <div className={styles.cart}>
-            <button
-              className={`${tildaFont.className} ${styles['cart-button']}`}
-            >
-              Добавить в корзину
-            </button>
-
-            <span className={styles['cart-counter']}>
-              {modalOverview !== null
-                ? `В корзине ${modalOverview.cartCounter} шт.`
-                : ''}
-            </span>
-            <div className={styles.spinbox}>
+            {!isAdded ? (
               <button
-                className={styles['spinbox-button']}
+                className={`${tildaFont.className} ${styles['cart-button']}`}
                 type="button"
-                onClick={handleDecrement}
+                onClick={handleAddToCart}
               >
-                -
+                Добавить в корзину
               </button>
-              <span>/</span>
+            ) : (
               <button
-                className={styles['spinbox-button']}
+                className={`${tildaFont.className} ${styles['cart-button']}`}
                 type="button"
-                onClick={hadleIncrement}
+                onClick={handleRemiveFromCart}
               >
-                +
+                Удалить из корзины
               </button>
-            </div>
+            )}
+            {isAdded ? (
+              <div className={styles.counter}>
+                <span className={styles['cart-counter']}>
+                  {modalOverview !== null
+                    ? `В корзине ${modalOverview.cartCounter} шт.`
+                    : ''}
+                </span>
+                <div className={styles.spinbox}>
+                  <button
+                    className={styles['spinbox-button']}
+                    type="button"
+                    onClick={handleDecrement}
+                  >
+                    -
+                  </button>
+                  <span>/</span>
+                  <button
+                    className={styles['spinbox-button']}
+                    type="button"
+                    onClick={hadleIncrement}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </section>

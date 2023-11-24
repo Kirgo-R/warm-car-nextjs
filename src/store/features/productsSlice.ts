@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState: ProductsState = {
   productsInCart: [],
   modalOverview: null,
-  overviewIsOpened: false
+  overviewIsOpened: false,
+  isAdded: false
 }
 
 const productsSlice = createSlice({
@@ -34,6 +35,9 @@ const productsSlice = createSlice({
           cartCounter: 1
         })
       }
+      state.isAdded = state.productsInCart.some(
+        product => product.id === action.payload.id
+      )
     },
     openOverview(state, action) {
       const existingProductIndex =
@@ -80,12 +84,18 @@ const productsSlice = createSlice({
             state.productsInCart.filter(
               product => product.id !== action.payload.id
             )
+          state.isAdded = state.productsInCart.some(
+            product => product.id === action.payload.id
+          )
         }
       }
     },
     removeFromCart(state, action) {
       state.productsInCart = state.productsInCart.filter(
         product => product.id !== action.payload
+      )
+      state.isAdded = state.productsInCart.some(
+        product => product.id === action.payload.id
       )
     }
   }

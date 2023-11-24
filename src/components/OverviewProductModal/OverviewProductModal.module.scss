@@ -69,6 +69,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+  }
 }
 
 .cart-button {
@@ -87,18 +91,31 @@
     opacity: .7;
   }
 
+  @media (max-width: 425px) {
+    margin: 0;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: flex-end;
 }
 
 .cart-counter {
   font-size: 14px;
   margin: 32px 0 0;
-
+  @media (max-width: 425px) {
+    margin: 0;
+  }
 }
 
 .spinbox {
   display: flex;
   gap: 2px;
   margin: 30px 0 0;
+  @media (max-width: 425px) {
+    margin: 0;
+  }
 }
 
 .spinbox-button {
