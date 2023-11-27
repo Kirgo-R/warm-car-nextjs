@@ -1,9 +1,10 @@
 @import "../styles/styles";
 
 .main {
-  min-height: calc(100vh - 143px - 291px - 64px);
+  min-height: calc(100vh - 145px - 295px - 64px);
   padding: 32px 16px 32px;
   display: grid;
+  grid-auto-rows: max-content;
 
   @media (max-width: 768px) {
     min-height: calc(100vh - 111px - 272px - 32px);

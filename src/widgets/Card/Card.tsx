@@ -9,11 +9,10 @@ import {
   openOverview,
   removeFromCart
 } from '@/store/features/productsSlice'
-import { memo, useEffect, useState } from 'react'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useAppSelector } from '@/hooks/useAppSelector'
 
-export default memo(function Card({
+export default function Card({
   id,
   mark,
   model,
@@ -27,6 +26,12 @@ export default memo(function Card({
     state => state.products
   )
   const isAdded = productsInCart.some(p => p.id === id)
+
+  const priceFormated = new Intl.NumberFormat('ru-RU', {
+    style: 'currency',
+    currency: 'RUB',
+    minimumFractionDigits: 2
+  }).format(price)
 
   function handleAddToCart() {
     dispatch(
@@ -91,11 +96,13 @@ export default memo(function Card({
         />
       </figure>
       <article className={styles.prices}>
-        <span className={styles.price}>{price} руб.</span>
+        <span className={styles.price}>
+          {priceFormated}
+        </span>
         <Link className={styles.price} href="/wholesalers">
           Узнать оптовую цену
         </Link>
       </article>
     </li>
   )
-})
+}

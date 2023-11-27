@@ -1,11 +1,11 @@
-interface IProduct {
+interface ProductInCartProps {
   id: number
   imageUrl: string
   alternativeText: string
-  model: string
   mark: string
+  model: string
   year: string
   price: number
-  cartCounter: number
+  counter: number
   amount: number
 }

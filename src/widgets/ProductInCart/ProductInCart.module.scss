@@ -1,0 +1,52 @@
+.table-cell {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+
+  &:first-child {
+    text-align: start;
+    font-weight: 600;
+  }
+
+  &:last-child {
+    text-align: end;
+    font-weight: 600;
+    width: 32px;
+  }
+
+  &:nth-child(4) {
+    width: 150px;
+  }
+
+  @media (max-width: 540px) {
+    font-size: 12px;
+  }
+}
+
+.changer {
+  padding: 0 12px 0 0;
+  font-size: 18px;
+  cursor: pointer;
+  transition: opacity .35s linear;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  &:last-child {
+    padding: 0 0 0 12px;
+
+  }
+}
+
+.remove {
+  cursor: pointer;
+  transition: opacity .35s linear;
+
+  &:hover {
+    opacity: .7;
+  }
+}

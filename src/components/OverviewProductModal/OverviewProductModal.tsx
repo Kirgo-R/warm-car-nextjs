@@ -79,7 +79,7 @@ export default function OverviewProductModal() {
     }
   }
 
-  function handleRemiveFromCart() {
+  function handleRemoveFromCart() {
     if (modalOverview !== null) {
       dispatch(removeFromCart(modalOverview.id))
     }
@@ -103,6 +103,16 @@ export default function OverviewProductModal() {
       )
       handleUpdateOverview(updatedCartCounter)
     }
+  }
+
+  let priceFormated: string = ''
+
+  if (modalOverview !== null) {
+    priceFormated = new Intl.NumberFormat('ru-RU', {
+      style: 'currency',
+      currency: 'RUB',
+      minimumFractionDigits: 2
+    }).format(modalOverview.price)
   }
 
   return (
@@ -142,7 +152,7 @@ export default function OverviewProductModal() {
           </h2>
           <span className={styles.price}>
             {modalOverview !== null
-              ? `Розничная цена ${modalOverview.price} руб.`
+              ? `Розничная цена ${priceFormated}`
               : ''}
           </span>
           <Link
@@ -165,7 +175,7 @@ export default function OverviewProductModal() {
               <button
                 className={`${tildaFont.className} ${styles['cart-button']}`}
                 type="button"
-                onClick={handleRemiveFromCart}
+                onClick={handleRemoveFromCart}
               >
                 Удалить из корзины
               </button>

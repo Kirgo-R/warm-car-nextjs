@@ -1,0 +1,55 @@
+.cartEmptyTitle {
+  text-align: start;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 32px 0;
+}
+
+.caption {
+  text-align: start;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 32px 0;
+}
+
+.heading {
+  padding: 0 0 12px;
+
+  &:first-child {
+    text-align: start;
+  }
+
+
+  @media (max-width: 540px) {
+    font-size: 14px;
+    padding: 0 8px 8px;
+
+    &:first-child {
+      padding: 0 8px 8px 0;
+    }
+  }
+}
+
+.sum {
+  padding: 18px 0 0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  &:first-child {
+    text-align: end;
+  }
+
+  &:last-child {
+    text-align: center;
+  }
+
+  @media (max-width: 540px) {
+    font-size: 14px;
+  }
+}
