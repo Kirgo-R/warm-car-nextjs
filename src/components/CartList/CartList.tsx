@@ -14,6 +14,11 @@ export default function CartList() {
     0
   )
 
+  const totalNumber = productsInCart.reduce(
+    (acc, itm) => acc + itm.cartCounter,
+    0
+  )
+
   const isEmpty = productsInCart.length <= 0
 
   const totalFormated = new Intl.NumberFormat('ru-RU', {
@@ -58,9 +63,10 @@ export default function CartList() {
       </tbody>
       <tfoot>
         <tr>
-          <td className={styles.sum} colSpan={3}>
-            Выбран(о) 1 товар(ов) на сумму:
+          <td className={styles.sum} colSpan={2}>
+            Всего:
           </td>
+          <td className={styles.sum}>{totalNumber}</td>
           <td className={styles.sum}>{totalFormated}</td>
         </tr>
       </tfoot>

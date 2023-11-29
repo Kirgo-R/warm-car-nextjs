@@ -17,7 +17,7 @@ export default async function Catalog() {
   return (
     <>
       <h2 className={styles.title}>Каталог</h2>
-      <FormSearch />
+      <FormSearch cards={cards.data} />
       <CardsList cards={cards.data} />
       <OverviewProductModal />
     </>

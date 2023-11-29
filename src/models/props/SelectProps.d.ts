@@ -4,5 +4,6 @@ interface SelectProps
   extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string
   label: string
-  value: string
+  optionValues: string[]
+  values: Record<string, string>
 }

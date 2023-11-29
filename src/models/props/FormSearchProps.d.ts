@@ -1,0 +1,3 @@
+interface FormSearchProps {
+  cards: CardData[]
+}

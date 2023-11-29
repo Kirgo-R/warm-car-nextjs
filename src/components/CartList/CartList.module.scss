@@ -40,14 +40,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  text-align: center;
+
 
   &:first-child {
     text-align: end;
   }
 
-  &:last-child {
-    text-align: center;
-  }
 
   @media (max-width: 540px) {
     font-size: 14px;

@@ -4,6 +4,7 @@ import {
 } from '@reduxjs/toolkit'
 import mobileMenuReducer from './features/mobileSlice'
 import productsReducer from './features/productsSlice'
+import filterReducer from './features/filterSlice'
 import {
   persistStore,
   persistReducer,
@@ -18,7 +19,8 @@ import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
   products: productsReducer,
-  mobileMenu: mobileMenuReducer
+  mobileMenu: mobileMenuReducer,
+  filter: filterReducer
 })
 
 const persistConfig = {
@@ -27,7 +29,8 @@ const persistConfig = {
   blacklist: [
     'mobileMenu',
     'products.overviewIsOpened',
-    'products.modalOverview'
+    'products.modalOverview',
+    'filter'
   ]
 }
 

@@ -1,14 +1,20 @@
 'use client'
-
 import styles from './CardsList.module.scss'
 import Card from '@/widgets/Card/Card'
+import { useAppSelector } from '@/hooks/useAppSelector'
 
 export default function CardsList({
   cards
 }: CardsListProps) {
+  const { isResult, searchResult } = useAppSelector(
+    state => state.filter
+  )
+
+  const displayedCards = !isResult ? cards : searchResult
+
   return (
     <ul className={styles.wrapper}>
-      {cards.map(cardData => (
+      {displayedCards.map(cardData => (
         <Card
           key={cardData.id}
           id={cardData.id}
