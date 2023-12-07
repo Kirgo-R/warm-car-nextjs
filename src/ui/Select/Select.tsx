@@ -1,4 +1,3 @@
-'use client'
 import styles from './Select.module.scss'
 import { tildaFont } from '@/assets/fonts/fonts'
 import { SelectProps } from '@/models/props/SelectProps'
@@ -10,8 +9,6 @@ export default function Select({
   onChange,
   values
 }: SelectProps) {
-  console.log(values)
-
   return (
     <select
       name={name}
